@@ -1,14 +1,9 @@
-
 const boggle = document.querySelector('.boggle');
+const timerSpan = document.querySelector('.timer');
 const wordPlace = document.querySelector('.word');
 const scoreBoard = document.querySelector('.scoresTable');
 const scoreUser = document.querySelector('.score');
 const userScore = 0;
-=======
-const boggle = document.querySelector(".boggle");
-let down = false; // флаг нажатия кнопки мыши
-let word = ""; // готовое слово при отпускании кнопки мыши
-let tempWord = ""; // переменная временного хранения буквы при перемещении
 const score = document.querySelector(".score");
 
 ["mousedown", "mousemove", "mouseup"].forEach((event) =>
@@ -16,7 +11,6 @@ const score = document.querySelector(".score");
 ); // задаем слушатели на все поле boggle
 const mixedButton = document.querySelector('.mix');
 const allLetters = document.querySelectorAll('.btn');
-const timerSpan = document.querySelector('.timer');
 
 
 let down = false;  // флаг нажатия кнопки мыши
@@ -67,7 +61,7 @@ function selectWord(event) {
       el.classList.remove("choosen"); // удаляем класс обводки на всех кнопксх
     });
   }
-}
+
 
 
 let result = [];
@@ -147,7 +141,6 @@ const addToInputScores = () => {
 
 }
 
-=======
 mixedButton.addEventListener('click', getStartGame)
 
 const used = [];
@@ -220,6 +213,4 @@ function getInput() {
     }
 }
 
-  score.innerText = result.reduce((sum, n) => sum + n);
-  return result.reduce((sum, n) => sum + n);
-};
+ 
