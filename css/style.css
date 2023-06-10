@@ -1,11 +1,27 @@
 body {
-    height:100vw;
+    height: 100vh;
+    width:100vw;
+    display: flex;
     box-sizing: border-box;
     margin:0px;
     padding:0px;
+    justify-content: center; 
+    align-items: center; 
 }
 .wrap {
+   
     display:grid;
+    justify-items: center;
+    text-align: center;
+
+   
+}
+
+.word {
+
+    border:0px;
+
+    padding:15px;
 }
 .boggle {
     box-sizing: border-box;
@@ -31,4 +47,15 @@ body {
     outline: 2px solid orangered;
     border: 0px solid black;
 
+}
+
+scoresTable {
+display:flex[;]
+
+
+}
+
+ul {
+    justify-items: flex-start;
+    list-style-type:none;
 }
