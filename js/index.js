@@ -41,4 +41,13 @@ function selectWord(event) {
 
 }   
 
+const localStorageUse = (score = 5) => {
+    localStorage.setItem('boggleTeam', JSON.stringify({score: [0, 1, 2, 3]}));
+    let scoresObj = JSON.parse(localStorage.boggleTeam );
+    let topScores = scoresObj.score; 
+    let maxScore = Math.max(...topScores);
+    
+}
+localStorageUse();
+
 
