@@ -17,8 +17,9 @@ const LETTERS = [
   "HIMNUQu",
   "HLNNRZ",
 ];
-let randomLetter = "";
+
 function createLetters(LETTERS) {
+  let randomLetter = "";
   let arrWord = ``;
   for (let i = 0; i < LETTERS.length; i++) {
     arrWord = LETTERS[i];
@@ -27,7 +28,7 @@ function createLetters(LETTERS) {
 
   return randomLetter;
 }
-
+let randomLetter = createLetters(LETTERS);
 collection.forEach((elem, i) => {
   elem.textContent = randomLetter[i];
 });
