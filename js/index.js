@@ -1,32 +1,27 @@
 const boggle = document.querySelector('.boggle');
-const timerSpan = document.querySelector('.timer');
 const wordPlace = document.querySelector('.word');
 const scoreBoard = document.querySelector('.scoresTable');
 const scoreUser = document.querySelector('.score');
 const userScore = 0;
+let down = false; // флаг нажатия кнопки мыши
+let word = ""; // готовое слово при отпускании кнопки мыши
+let tempWord = ""; // переменная временного хранения буквы при перемещении
 const score = document.querySelector(".score");
-
-["mousedown", "mousemove", "mouseup"].forEach((event) =>
-  boggle.addEventListener(event, selectWord)
-); // задаем слушатели на все поле boggle
-const mixedButton = document.querySelector('.mix');
 const allLetters = document.querySelectorAll('.btn');
-
-
-let down = false;  // флаг нажатия кнопки мыши
-let word = '';      // готовое слово при отпускании кнопки мыши
-let tempWord ='';  // переменная временного хранения буквы при перемещении
+const mixedButton = document.querySelector('.mix');
+const timerSpan = document.querySelector('.timer');
    
-['mousedown', 'mousemove', 'mouseup'].forEach(event => 
-    boggle.addEventListener(event, selectWord)); // задаем слушатели на все поле boggle
+ // задаем слушатели на все поле boggle
 
 
-function selectWord(event) {
+  
+   
+
+const selectWord = async (event) => {
   if (event.currentTarget === event.target) {
     // делегируем события с поля на кнопки с буквами
     return;
   }
-
 
     if(event.type == 'mousedown') {                   // проверка нажата ли кнопка мыши
         down = true;   
@@ -46,65 +41,26 @@ function selectWord(event) {
         }
 
     }
-  }
-
-
+  
   if (event.type == "mouseup") {
     down = 0; // сбрасываем флаг нажатия кнопки мыши
-    const wordExist = await checkWord(word);
+   var wordExist = await checkWord(word);
     if(wordExist) {
       countScore(word);
     }
     word = ""; // обнуляем слово
+    wordPlace.value = word;
     const choosen = document.querySelectorAll(".choosen"); // выбираем все отмеченные кнопки
     choosen.forEach((el) => {
       el.classList.remove("choosen"); // удаляем класс обводки на всех кнопксх
     });
   }
+}
 
 
 
-let result = [];
-const checkWord = async (word) => {
-  const url = "https://api.dictionaryapi.dev/api/v2/entries/en/" + word;
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    if (Array.isArray(data)) {
-      return true;
-    } else {
-      return false;
-    }
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-
-let arr = [];
-const countScore = (word) => {
-  if (word.length <= 4 && word.length >= 3) {
-    arr.push(word);
-    result.push(1);
-  } else if (word.length === 5) {
-    arr.push(word);
-    result.push(2);
-  } else if (word.length === 6) {
-    arr.push(word);
-    result.push(3);
-  } else if (word.length === 7) {
-    arr.push(word);
-    result.push(5);
-  } else if (word.length >= 8) {
-    arr.push(word);
-    result.push(11);
-  } else {
-    result.push(0);
-  }
-score.innerText = result.reduce((sum, n) => sum + n);
-  return result.reduce((sum, n) => sum + n);
-}   
-
+['mousedown', 'mousemove', 'mouseup'].forEach(event => 
+  boggle.addEventListener(event, selectWord));
 
 const localStorageUse = (inputScore = 0) => {
    // console.log(localStorage.getItem('boggleTeam').length);
@@ -128,7 +84,6 @@ const localStorageUse = (inputScore = 0) => {
 
 
 const addToInputScores = () => {
-   // localStorage.setItem('boggleTeam', JSON.stringify({score: [0,1,2,5,6,7,8,10]}));
     let scoresObj = JSON.parse(localStorage.boggleTeam );
     let topScores = scoresObj.score; 
     let ulEl = document.createElement('ul');
@@ -164,12 +119,12 @@ function getStartGame (event) {
 
     getInput ()
 
-    let seconds = 180; 
+    let seconds = 5; 
     const timer = setInterval (() => {
       if (seconds <= 0){
         timeOut = false;
         clearInterval(timer);
-        endGame({name: 'Name', total: counter});
+        
       }
       timerSpan.innerText = seconds;
       seconds--
@@ -191,7 +146,7 @@ const lettersDict = [
   ["E", "H", "R", "T", "V", "W"],
   ["E", "I", "O", "S", "S", "T"],
   ["E", "L", "R", "T", "T", "Y"],
-  ["H", "I", "M", "N", "U", "Qu"],
+  ["H", "I", "M", "N", "U", "Q"],
   ["H", "L", "N", "N", "R", "Z"],
 ];
 
@@ -213,4 +168,5 @@ function getInput() {
     }
 }
 
- 
+
+
