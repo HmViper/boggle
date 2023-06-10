@@ -9,12 +9,13 @@ body {
     align-items: center; 
 }
 .wrap {
+
    
     display:grid;
     justify-items: center;
     text-align: center;
 
-   
+  
 }
 
 .word {
@@ -50,7 +51,7 @@ body {
 }
 
 scoresTable {
-display:flex[;]
+display:flex;
 
 
 }
@@ -59,3 +60,17 @@ ul {
     justify-items: flex-start;
     list-style-type:none;
 }
+
+.score {
+    margin-top: 30vw;
+    border: 2px solid red;
+    width: 6vw;
+    height: 5vw;
+    font-size: 1.5vw;
+}
+
+.mix {
+     margin:15px;
+
+}
+
