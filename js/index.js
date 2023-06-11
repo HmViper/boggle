@@ -7,6 +7,18 @@ const score = document.querySelector(".score");
 ["mousedown", "mousemove", "mouseup"].forEach((event) =>
   boggle.addEventListener(event, selectWord)
 ); // задаем слушатели на все поле boggle
+const mixedButton = document.querySelector('.mix');
+const allLetters = document.querySelectorAll('.btn');
+const timerSpan = document.querySelector('.timer');
+
+
+let down = false;  // флаг нажатия кнопки мыши
+let word = '';      // готовое слово при отпускании кнопки мыши
+let tempWord ='';  // переменная временного хранения буквы при перемещении
+   
+['mousedown', 'mousemove', 'mouseup'].forEach(event => 
+    boggle.addEventListener(event, selectWord)); // задаем слушатели на все поле boggle
+
 
 function selectWord(event) {
   if (event.currentTarget === event.target) {
@@ -61,6 +73,7 @@ const checkWord = async (word) => {
   }
 };
 
+
 let arr = [];
 const countScore = (word) => {
   arr.findIndex((el) => el === word);
@@ -82,6 +95,80 @@ const countScore = (word) => {
   } else {
     result.push(0);
   }
+
+}   
+
+mixedButton.addEventListener('click', getStartGame)
+
+const used = [];
+let counter = 0;
+let timeOut = false;
+
+allLetters.forEach((item) => {
+    item.addEventListener('mousedown', (event) => {
+      if(timeOut) {
+        pushLetter(event);
+      }
+    })
+  })
+
+function getStartGame (event) {
+    if (timeOut === true){
+        return null
+    }
+    event.preventDefault();
+    timeOut = true;
+
+    getInput ()
+
+    let seconds = 180; 
+    const timer = setInterval (() => {
+      if (seconds <= 0){
+        timeOut = false;
+        clearInterval(timer);
+        endGame({name: 'Name', total: counter});
+      }
+      timerSpan.innerText = seconds;
+      seconds--
+    }, 1000)
+};
+
+const lettersDict = [
+  ["A", "A", "E", "E", "G", "N"],
+  ["A", "B", "B", "J", "O", "O"],
+  ["A", "C", "H", "O", "P", "S"],
+  ["A", "F", "F", "K", "P", "S"],
+  ["A", "O", "O", "T", "T", "W"],
+  ["C", "I", "M", "O", "T", "U"],
+  ["D", "E", "I", "L", "R", "X"],
+  ["D", "E", "L", "R", "V", "Y"],
+  ["D", "I", "S", "T", "T", "Y"],
+  ["E", "E", "G", "H", "N", "W"],
+  ["E", "E", "I", "N", "S", "U"],
+  ["E", "H", "R", "T", "V", "W"],
+  ["E", "I", "O", "S", "S", "T"],
+  ["E", "L", "R", "T", "T", "Y"],
+  ["H", "I", "M", "N", "U", "Qu"],
+  ["H", "L", "N", "N", "R", "Z"],
+];
+
+function getRandomInteger(min = 0, max = 5) {
+    const n = Math.random() * (max - min + 1) + min;
+    return Math.floor(n);
+  }
+
+function getMixLetter(arr) {
+    const result = [];
+    arr.forEach((elem) => result.push(elem[getRandomInteger()]));
+    return result;
+  }
+
+function getInput() {
+    const dict = getMixLetter(lettersDict);
+    for (let i = 0; i < allLetters.length; i += 1) {
+      allLetters[i].innerText = dict[i];
+    }
+}
 
   score.innerText = result.reduce((sum, n) => sum + n);
   return result.reduce((sum, n) => sum + n);
