@@ -63,6 +63,7 @@ const checkWord = async (word) => {
 
 let arr = [];
 const countScore = (word) => {
+  arr.findIndex((el) => el === word);
   if (word.length <= 4 && word.length >= 3) {
     arr.push(word);
     result.push(1);
