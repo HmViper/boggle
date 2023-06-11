@@ -83,19 +83,6 @@ const localStorageUse = (inputScore = 0) => {
 }
 
 
-const addToInputScores = () => {
-    let scoresObj = JSON.parse(localStorage.boggleTeam );
-    let topScores = scoresObj.score; 
-    let ulEl = document.createElement('ul');
-     topScores.forEach((element) => {
-        let liEl = document.createElement('li');
-        liEl.textContent = element;
-        ulEl.appendChild(liEl);
-     });
-     scoreBoard.appendChild(ulEl);
-
-}
-
 mixedButton.addEventListener('click', getStartGame)
 
 const used = [];
