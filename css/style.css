@@ -2,7 +2,6 @@ body {
     height: 100vh;
     width:100vw;
     display: flex;
-    flex-direction: column;
     box-sizing: border-box;
     margin:0px;
     padding:0px;
@@ -10,11 +9,13 @@ body {
     align-items: center; 
 }
 .wrap {
-    margin: auto;
-    width:500px;
+
+   
     display:grid;
     justify-items: center;
     text-align: center;
+
+  
 }
 
 .word {
@@ -49,6 +50,17 @@ body {
 
 }
 
+scoresTable {
+display:flex;
+
+
+}
+
+ul {
+    justify-items: flex-start;
+    list-style-type:none;
+}
+
 .score {
     margin-top: 30vw;
     border: 2px solid red;
@@ -61,3 +73,4 @@ body {
      margin:15px;
 
 }
+

@@ -5,18 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style.css" />
-    <script src="./js/index.js" defer></script>
     <script src="./js/createLetters.js" defer></script>
+    <script src="./js/checkword.js" defer></script>
+    <script src="./js/index.js" defer></script>
+
     <title>Boggle</title>
   </head>
   <body>
     <div class="wrap">
-
-      <input type="text" class="word" />
       <input type="text" class="score" placeholder="Score" />
       <div>Таймер: <span class="timer">180</span> сек</div>
       <input type="text" class="word" />
-
 
       <div class="boggle">
         <div class="btn">A</div>
@@ -36,6 +35,8 @@
         <div class="btn">O</div>
         <div class="btn">P</div>
       </div>
+      <button class="mix">Смешать</button>
     </div>
+    <div class="scoresTable">Таблица лучших:</div>
   </body>
 </html>
