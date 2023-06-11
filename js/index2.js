@@ -1,5 +1,20 @@
 let result = [];
 
+const checkWord = async (word) => {
+  const url = "https://api.dictionaryapi.dev/api/v2/entries/en/" + word;
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    if (Array.isArray(data)) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 let arr = [];
 const countScore = (word) => {
   const arrCheck = arr.findIndex((el) => el === word);
