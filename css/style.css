@@ -45,19 +45,17 @@ body {
 }
 
 .choosen {
-    outline: 2px solid orangered;
-    border: 0px solid black;
+    outline: 2px solid rgb(35, 132, 202);
+    border: none;
 
 }
 
 .scoresTable {
-    text-align: start;
-    margin-top: -200px;
-    display:flex;
-}
+    display: flex;
+    flex-direction: column;
+    }
 
 ul {
-    justify-items: flex-start;
     list-style-type:none;
 }
 
@@ -69,8 +67,26 @@ ul {
     text-align: center;
 }
 
-.mix {
-     margin:15px;
+.score:focus, .word:focus {
+    outline: none;
+    cursor:default;
+}
 
+.mix {
+     margin-top:30px;
+     padding: 15px;
+     font-size: 24px;
+     border-radius: 10px;
+     background-color: grey;
+    border: 1px solid rgb(35, 132, 202);
+     color:white;
+     
+
+}
+.mix:hover {
+    color: white;
+    background-color: black;
+    transform: scale(1.05);
+    transition: all .2s;
 }
 

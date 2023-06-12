@@ -80,6 +80,29 @@ const localStorageUse = (inputScore = 0) => {
   return topScores;
 };
 
+
+const addToInputScores = () => {
+   // localStorage.setItem('boggleTeam', JSON.stringify({score: [0,1,2,5,6,7,8,10]}));
+   const ul = document.querySelector('ul');
+   if(ul) {
+    scoreBoard.removeChild(ul);
+   }
+   try{
+    let scoresObj = JSON.parse(localStorage.boggleTeam );
+    let topScores = scoresObj.score; 
+    let ulEl = document.createElement('ul');
+     topScores.forEach((element) => {
+        let liEl = document.createElement('li');
+        liEl.textContent = element;
+        ulEl.appendChild(liEl);
+     });
+     scoreBoard.appendChild(ulEl);
+    }
+    catch(error) {
+      console.log(error);
+    }
+}
+
 mixedButton.addEventListener("click", getStartGame);
 
 const used = [];
@@ -101,8 +124,9 @@ function getStartGame(event) {
   event.preventDefault();
   timeOut = true;
   localStorageUse(score.value);
+  score.value = '';
   getInput();
-
+  addToInputScores();
   let seconds = 5;
   const timer = setInterval(() => {
     if (seconds <= 0) {
