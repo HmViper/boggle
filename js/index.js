@@ -100,7 +100,7 @@ function getStartGame(event) {
   }
   event.preventDefault();
   timeOut = true;
-
+  localStorageUse(score.value);
   getInput();
 
   let seconds = 5;

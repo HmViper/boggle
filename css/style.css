@@ -50,10 +50,10 @@ body {
 
 }
 
-scoresTable {
-display:flex;
-
-
+.scoresTable {
+    text-align: start;
+    margin-top: -200px;
+    display:flex;
 }
 
 ul {
@@ -62,11 +62,11 @@ ul {
 }
 
 .score {
-    margin-top: 30vw;
-    border: 2px solid red;
-    width: 6vw;
-    height: 5vw;
-    font-size: 1.5vw;
+    border: 0px;
+    padding: 5px;
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
 }
 
 .mix {
